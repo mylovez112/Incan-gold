@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Incan Gold — ขุมทรัพย์อินคา</title>
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14231f;--jade:#2e7d6a;--gold:#f2b632;--clay:#c8452d;--bone:#efe3c8;--moss:#1d352e}
+*{box-sizing:border-box}body{margin:0;font-family:Itim,'Tahoma',sans-serif;color:var(--bone);min-height:100vh;
+background:radial-gradient(circle at 50% -10%,#2a5a4a,transparent 60%),repeating-linear-gradient(45deg,#14231f 0 14px,#162a24 14px 28px)}
+body.shake{animation:sk .6s}@keyframes sk{20%{transform:translate(-12px,6px)}40%{transform:translate(10px,-8px)}60%{transform:translate(-8px,4px)}80%{transform:translate(6px,-3px)}}
+body.flash::after{content:"";position:fixed;inset:0;background:var(--clay);opacity:.0;pointer-events:none;animation:fl .7s}@keyframes fl{30%{opacity:.5}}
+h1{font-size:clamp(2.2rem,8vw,4rem);margin:0;color:var(--gold);text-shadow:4px 4px 0 var(--clay);letter-spacing:2px}
+main{max-width:980px;margin:auto;padding:16px}.box{background:var(--moss);border:3px solid var(--bone);box-shadow:6px 6px 0 #000;padding:16px;border-radius:6px}
+input,button{font:inherit;font-size:1.1rem;padding:10px 14px;border:3px solid var(--bone);background:var(--ink);color:var(--bone);border-radius:6px}
+button{cursor:pointer;box-shadow:4px 4px 0 #000;transition:.1s}button:hover{transform:translate(-2px,-2px)}button:active{transform:translate(3px,3px);box-shadow:none}
+button:disabled{opacity:.4;cursor:not-allowed}.go{background:var(--clay)}.home{background:var(--jade)}.big{font-size:1.5rem;padding:14px 26px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.hide{display:none!important}
+#path{display:flex;gap:10px;overflow-x:auto;padding:14px 4px;min-height:190px}
+.card{flex:0 0 108px;height:158px;border:3px solid #000;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:2.6rem;
+box-shadow:4px 4px 0 #000;animation:flip .7s}@keyframes flip{from{transform:rotateY(90deg) scale(.6) translateY(-60px);opacity:0}}
+.card small{font-size:1rem}.t{background:var(--gold);color:#3b2600}.h{background:var(--clay)}.a{background:linear-gradient(#8e5bd1,#5b3a99);color:#fff}.b{background:#000;color:var(--clay);border-color:var(--clay)}
+.pl{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:10px}
+.p{padding:10px;border:3px solid var(--bone);border-radius:6px;background:var(--ink);position:relative}.p.me{border-color:var(--gold)}.p.out{opacity:.55}
+.seen{display:flex;gap:8px;font-size:1.6rem}.seen span{opacity:.3;padding:2px 6px;border-radius:6px}.seen .s1{opacity:1;background:#6b5a14}.seen .s2{opacity:1;background:var(--clay)}
+#msg{font-size:1.4rem;text-align:center;min-height:2em;color:var(--gold)}
+.gem{display:inline-block;animation:pop .5s}@keyframes pop{from{transform:scale(2);color:#fff}}
+.fx{position:fixed;font-size:2rem;pointer-events:none;animation:up 1.4s forwards}@keyframes up{to{transform:translateY(-160px) rotate(40deg);opacity:0}}
+#err{color:var(--clay)}
+</style></head><body><main>
+<div style="text-align:center"><h1>INCAN GOLD</h1><div>ขุมทรัพย์อินคา · เล่นออนไลน์กับเพื่อน</div></div>
+<div id="lobby" class="box" style="margin-top:18px"><div class="row">
+<input id="name" placeholder="ชื่อนักสำรวจ" maxlength="14"><input id="room" placeholder="รหัสห้อง (เว้นว่าง = สร้างใหม่)" maxlength="5" style="text-transform:uppercase;width:260px">
+<button class="go" id="join">เข้าสู่วิหาร</button></div><p id="err"></p>
+<p>กติกา: 5 รอบ ทุกรอบเปิดการ์ดทีละใบ · เพชรแบ่งเท่าๆ กันให้คนที่ยังอยู่ (เศษตกค้างบนการ์ด) · ทุกคนเลือกพร้อมกันว่า "ลุยต่อ" หรือ "กลับเต็นท์" · ภัยชนิดเดียวกันโผล่ครั้งที่ 2 = ทุกคนที่ยังอยู่เสียเพชรในมือ · กลับคนเดียวได้เก็บโบราณวัตถุ · จบ 5 รอบ เพชรในเต็นท์มากสุดชนะ</p></div>
+<div id="game" class="hide">
+<div class="row" style="justify-content:space-between;margin-top:14px"><div>ห้อง <b id="code" style="font-size:1.6rem;color:var(--gold)"></b> · รอบ <b id="rd"></b>/5 · การ์ดในกอง <b id="dk"></b></div>
+<div class="seen" id="seen"></div><button id="mute">🔊</button></div>
+<div class="box" style="margin-top:10px"><div id="path"></div><div id="msg"></div></div>
+<div class="row" style="justify-content:center;margin:16px 0" id="ctl">
+<button class="go big" id="bgo">🔦 ลุยต่อ</button><button class="home big" id="bhome">⛺ กลับเต็นท์</button><button class="big hide" id="start">เริ่มเกม</button></div>
+<div class="pl" id="pl"></div></div></main>
+<script>
+const $=id=>document.getElementById(id),IC={snake:'🐍',spider:'🕷️',mummy:'🧟',fire:'🔥',rock:'🪨'},NM={snake:'งู',spider:'แมงมุม',mummy:'มัมมี่',fire:'ไฟ',rock:'หินถล่ม'};
+let ws,S=null,lastEv=0,mute=false,AC;
+function snd(f,d=.15,ty='square',v=.08,sl=0,at=0){if(mute)return;AC=AC||new(window.AudioContext||webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+at;
+o.type=ty;o.frequency.setValueAtTime(f,t);if(sl)o.frequency.exponentialRampToValueAtTime(sl,t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d)}
+const SFX={flip:()=>snd(300,.12,'triangle',.1,500),coin:()=>{snd(988,.1,'square',.07);snd(1319,.25,'square',.07,0,.09)},
+haz:()=>{snd(220,.35,'sawtooth',.09,110)},boom:()=>{snd(120,.9,'sawtooth',.2,30);snd(80,.9,'square',.15,20,.1)},
+art:()=>[523,659,784,1047].forEach((f,i)=>snd(f,.3,'triangle',.1,0,i*.1)),leave:()=>snd(400,.3,'triangle',.1,200),
+win:()=>[523,659,784,659,784,1047].forEach((f,i)=>snd(f,.25,'square',.08,0,i*.13))};
+function fx(e,n=8){for(let i=0;i<n;i++){const s=document.createElement('div');s.className='fx';s.textContent=e;s.style.left=(15+Math.random()*70)+'vw';s.style.top=(40+Math.random()*30)+'vh';s.style.animationDelay=Math.random()*.4+'s';document.body.append(s);setTimeout(()=>s.remove(),2000)}}
+function conn(){ws=new WebSocket((location.protocol=='https:'?'wss://':'ws://')+location.host);
+ws.onopen=()=>ws.send(JSON.stringify({t:'join',name:$('name').value.trim(),room:$('room').value}));
+ws.onmessage=e=>{const d=JSON.parse(e.data);if(d.err){$('err').textContent=d.err;return}S=d;render()};
+ws.onclose=()=>{if(S)$('msg').textContent='หลุดการเชื่อมต่อ — รีเฟรชแล้วใช้ชื่อเดิมเพื่อกลับเข้าห้อง'}}
+$('join').onclick=()=>{if(!$('name').value.trim()){$('err').textContent='ใส่ชื่อก่อนนะ';return}AC=AC||new(window.AudioContext||webkitAudioContext)();conn()};
+$('mute').onclick=()=>{mute=!mute;$('mute').textContent=mute?'🔇':'🔊'};
+$('start').onclick=()=>ws.send(JSON.stringify({t:'start'}));
+$('bgo').onclick=()=>ws.send(JSON.stringify({t:'choice',go:true}));$('bhome').onclick=()=>ws.send(JSON.stringify({t:'choice',go:false}));
+function cardHTML(c){if(c.k==='t')return`<div class="card t">💎<b>${c.v}</b><small>เหลือ ${c.left}</small></div>`;
+if(c.k==='a')return`<div class="card a">🏺<b>${c.v}</b><small>โบราณวัตถุ</small></div>`;
+return`<div class="card ${S.phase==='bust'&&c===S.path[S.path.length-1]?'b':'h'}">${IC[c.h]}<small>${NM[c.h]}</small></div>`}
+function render(){const me=S.players.find(p=>p.id===S.me),L=S.phase==='lobby';
+$('lobby').classList.add('hide');$('game').classList.remove('hide');$('code').textContent=S.code;$('rd').textContent=S.round;$('dk').textContent=S.deck;
+$('seen').innerHTML=Object.keys(IC).map(h=>`<span class="s${S.seen[h]||0}">${IC[h]}</span>`).join('');
+const old=$('path').children.length;$('path').innerHTML=S.path.map(cardHTML).join('');$('path').scrollLeft=1e5;
+$('pl').innerHTML=S.players.map(p=>`<div class="p ${p.id===S.me?'me':''} ${!p.in&&!L?'out':''}"><b>${p.name}${p.id===S.host?' 👑':''}${p.off?' 📴':''}</b><br>
+${L?'รอเพื่อน…':`🎒 <span class="gem">${p.hand}</span> ${p.in?(p.done?'✅ เลือกแล้ว':'🤔 กำลังคิด'):'⛺ อยู่เต็นท์'}<br>⛺ ${p.tent===null?'???':p.tent} · 🏺 ${p.arts}`}</div>`).join('');
+const dec=S.phase==='decide'&&me.in&&!me.done;
+$('bgo').classList.toggle('hide',L||S.phase==='over');$('bhome').classList.toggle('hide',L||S.phase==='over');$('bgo').disabled=$('bhome').disabled=!dec;
+$('start').classList.toggle('hide',!(L&&S.host===S.me));$('start').disabled=S.players.length<2;
+let m=L?(S.players.length<2?'ส่งรหัสห้องให้เพื่อน — ต้องมีอย่างน้อย 2 คน':'พร้อมแล้ว รอเจ้าของห้องกดเริ่ม'):me.in?(me.done?'รอคนอื่นตัดสินใจ…':'ลุยต่อหรือกลับเต็นท์?'):'คุณอยู่เต็นท์แล้ว รอดูรอบนี้จบ';
+const e=S.ev;if(e&&e.n!==lastEv){lastEv=e.n;
+if(e.t==='treasure'){SFX.flip();setTimeout(SFX.coin,250);fx('💎',6);m=`เจอเพชร ${e.v}! คนละ ${e.s}`}
+if(e.t==='artifact'){SFX.flip();SFX.art();fx('🏺',4);m='พบโบราณวัตถุ! ใครกลับคนเดียวได้ไป'}
+if(e.t==='hazard'){SFX.flip();SFX.haz();m=`⚠️ ${NM[e.h]}! ภัยนี้โผล่อีกครั้ง = หายนะ`}
+if(e.t==='bust'){SFX.boom();document.body.classList.add('shake','flash');setTimeout(()=>document.body.classList.remove('shake','flash'),800);fx(IC[e.h],12);m=`💥 ${NM[e.h]}สองตัว! ผู้ที่ยังอยู่เสียเพชรในมือทั้งหมด`}
+if(e.t==='reveal'){e.leave.length?(SFX.leave(),SFX.coin()):0;m=`กลับเต็นท์: ${e.leave.join(', ')||'ไม่มี'} · ลุยต่อ: ${e.stay.join(', ')||'ไม่มี'}`}
+if(e.t==='allhome')m='ทุกคนกลับเต็นท์แล้ว จบรอบ';
+if(e.t==='over'){SFX.win();const w=[...S.players].sort((a,b)=>b.tent-a.tent);m=`🏆 ผู้ชนะคือ ${w[0].name} ด้วย ${w[0].tent} เพชร!`;fx('🏆',10);fx('💎',10)}
+$('msg').dataset.m=m}
+$('msg').textContent=(e&&e.n===lastEv&&$('msg').dataset.m&&!L&&S.phase!=='decide')?$('msg').dataset.m:(S.phase==='decide'&&e&&e.t!=='reveal'?($('msg').dataset.m+' — '+m):m);
+if(S.phase==='over')$('msg').textContent=$('msg').dataset.m}
+</script></body></html>
