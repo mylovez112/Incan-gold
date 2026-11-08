@@ -2,81 +2,128 @@
 <title>Incan Gold — ขุมทรัพย์อินคา</title>
 <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#14231f;--jade:#2e7d6a;--gold:#f2b632;--clay:#c8452d;--bone:#efe3c8;--moss:#1d352e}
-*{box-sizing:border-box}body{margin:0;font-family:Itim,'Tahoma',sans-serif;color:var(--bone);min-height:100vh;
-background:radial-gradient(circle at 50% -10%,#2a5a4a,transparent 60%),repeating-linear-gradient(45deg,#14231f 0 14px,#162a24 14px 28px)}
-body.shake{animation:sk .6s}@keyframes sk{20%{transform:translate(-12px,6px)}40%{transform:translate(10px,-8px)}60%{transform:translate(-8px,4px)}80%{transform:translate(6px,-3px)}}
-body.flash::after{content:"";position:fixed;inset:0;background:var(--clay);opacity:.0;pointer-events:none;animation:fl .7s}@keyframes fl{30%{opacity:.5}}
-h1{font-size:clamp(2.2rem,8vw,4rem);margin:0;color:var(--gold);text-shadow:4px 4px 0 var(--clay);letter-spacing:2px}
-main{max-width:980px;margin:auto;padding:16px}.box{background:var(--moss);border:3px solid var(--bone);box-shadow:6px 6px 0 #000;padding:16px;border-radius:6px}
-input,button{font:inherit;font-size:1.1rem;padding:10px 14px;border:3px solid var(--bone);background:var(--ink);color:var(--bone);border-radius:6px}
-button{cursor:pointer;box-shadow:4px 4px 0 #000;transition:.1s}button:hover{transform:translate(-2px,-2px)}button:active{transform:translate(3px,3px);box-shadow:none}
-button:disabled{opacity:.4;cursor:not-allowed}.go{background:var(--clay)}.home{background:var(--jade)}.big{font-size:1.5rem;padding:14px 26px}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.hide{display:none!important}
-#path{display:flex;gap:10px;overflow-x:auto;padding:14px 4px;min-height:190px}
-.card{flex:0 0 108px;height:158px;border:3px solid #000;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:2.6rem;
-box-shadow:4px 4px 0 #000;animation:flip .7s}@keyframes flip{from{transform:rotateY(90deg) scale(.6) translateY(-60px);opacity:0}}
-.card small{font-size:1rem}.t{background:var(--gold);color:#3b2600}.h{background:var(--clay)}.a{background:linear-gradient(#8e5bd1,#5b3a99);color:#fff}.b{background:#000;color:var(--clay);border-color:var(--clay)}
-.pl{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:10px}
-.p{padding:10px;border:3px solid var(--bone);border-radius:6px;background:var(--ink);position:relative}.p.me{border-color:var(--gold)}.p.out{opacity:.55}
-.seen{display:flex;gap:8px;font-size:1.6rem}.seen span{opacity:.3;padding:2px 6px;border-radius:6px}.seen .s1{opacity:1;background:#6b5a14}.seen .s2{opacity:1;background:var(--clay)}
-#msg{font-size:1.4rem;text-align:center;min-height:2em;color:var(--gold)}
-.gem{display:inline-block;animation:pop .5s}@keyframes pop{from{transform:scale(2);color:#fff}}
-.fx{position:fixed;font-size:2rem;pointer-events:none;animation:up 1.4s forwards}@keyframes up{to{transform:translateY(-160px) rotate(40deg);opacity:0}}
-#err{color:var(--clay)}
+:root{--gold:#f5b82e;--clay:#d9512c;--jade:#2fa58a;--bone:#f6ead0;--ink:#1b1410;--wood:#6b4226}
+*{box-sizing:border-box}body{margin:0;font-family:Itim,Tahoma,sans-serif;color:var(--bone);min-height:100vh;
+background:radial-gradient(ellipse at 50% 0,#2d7a55 0,#14442f 55%,#0b2a1c 100%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 4px)}
+body.shake{animation:sk .7s}@keyframes sk{20%{transform:translate(-14px,7px)}40%{transform:translate(12px,-9px)}60%{transform:translate(-9px,5px)}80%{transform:translate(6px,-3px)}}
+body.flash:after{content:"";position:fixed;inset:0;background:radial-gradient(#ff5a1f,#900);pointer-events:none;animation:fl .9s;opacity:0}@keyframes fl{25%{opacity:.6}}
+main{max-width:1100px;margin:auto;padding:12px}
+.wood{background:repeating-linear-gradient(90deg,#7a4a2a 0 18px,#6b4226 18px 36px);border:4px solid #3a2112;border-radius:10px;box-shadow:0 6px 0 #000a}
+.bar{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 14px}
+.logo{font-size:2rem;color:var(--gold);text-shadow:3px 3px 0 var(--clay),5px 5px 0 #000}
+button,input{font:inherit;font-size:1.1rem;padding:9px 14px;border:3px solid #2a1608;border-radius:8px;background:var(--bone);color:var(--ink)}
+button{cursor:pointer;box-shadow:0 4px 0 #2a1608;transition:.1s}button:hover{transform:translateY(-2px)}button:active{transform:translateY(3px);box-shadow:none}button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.big{font-size:1.4rem;padding:12px 28px;background:var(--gold)}
+.hide{display:none!important}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.parch{background:radial-gradient(#f7e6bd,#e3c88c);color:#3a2610;border:4px solid #7a5230;border-radius:12px;box-shadow:inset 0 0 40px #b98a4a,0 6px 0 #000a;padding:14px}
+.rounds{display:flex;gap:6px}.rounds svg{width:34px;opacity:.35}.rounds .on{opacity:1;filter:drop-shadow(0 0 6px var(--gold))}.rounds .done{opacity:.8}
+#table{display:grid;grid-template-columns:150px 1fr;gap:12px;margin-top:12px}@media(max-width:700px){#table{grid-template-columns:1fr}}
+.side{display:flex;flex-direction:column;gap:10px;align-items:center}
+.pile{position:relative;width:112px;height:160px}.pile .card{position:absolute}.pile .card:nth-child(1){transform:translate(-5px,5px)}.pile .card:nth-child(2){transform:translate(-2px,2px)}
+#trk{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.chip{position:relative;width:44px;height:44px;background:#0006;border-radius:8px;opacity:.4}.chip svg{width:100%}
+.chip.s1{opacity:1;box-shadow:0 0 0 3px var(--gold)}.chip.s2{opacity:1;box-shadow:0 0 0 3px var(--clay);animation:sk .5s}
+#path{display:flex;gap:12px;overflow-x:auto;padding:12px 6px 18px;min-height:210px;align-items:center}
+.card{flex:0 0 112px;height:160px;border-radius:10px;border:3px solid #2a1608;box-shadow:0 5px 0 #0008;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.card.new{animation:flip .8s}@keyframes flip{0%{transform:translateY(-120px) rotateY(180deg) scale(.5);opacity:0}70%{transform:translateY(8px) rotateY(0)}}
+.card svg{width:88%}.card i{position:absolute;font-style:normal;font-size:1.5rem;font-weight:bold;text-shadow:0 0 4px #fff8}.card i.a{top:3px;left:7px}.card i.b{bottom:3px;right:7px;transform:rotate(180deg)}
+.card .cap{position:absolute;bottom:4px;font-size:.85rem;background:#000a;color:#fff;border-radius:8px;padding:0 7px}
+.t{background:radial-gradient(#fff0b8,#e9b44c 70%);color:#5a3500}.h{background:radial-gradient(#8b2a1a,#2d0c07);color:#fff}.a{background:radial-gradient(#b48cf0,#4a2a8a);color:#fff}
+.back{background:repeating-linear-gradient(45deg,#8a2f1c 0 8px,#a4401f 8px 16px);border-color:#f5b82e}.back svg{width:60%}
+.bust{outline:5px solid #f33;animation:sk .6s}
+#msg{margin-top:6px;text-align:center;font-size:1.3rem;min-height:1.6em}#hint{text-align:center;color:#7a4a1a;min-height:1.4em}
+#seats{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px;margin-top:14px}
+.seat{background:#0007;border:3px solid #fff3;border-radius:12px;padding:8px 10px;display:grid;grid-template-columns:50px 1fr 120px;gap:2px 8px;align-items:center}
+.seat.me{border-color:var(--gold);background:#3b2a0a88}.seat.out .pawn{opacity:.4}.pawn svg{width:46px}
+.nm{font-size:1.15rem}.hd{display:flex;align-items:center;gap:4px}.hd svg{width:22px}.st{font-size:.85rem;opacity:.85}
+.slot{grid-column:1;height:62px}.mini{width:44px;height:60px;border-radius:7px;border:2px solid #2a1608;display:flex;align-items:center;justify-content:center;background:var(--bone)}.mini svg{width:34px}.mini.rev{animation:flip .7s}.mini.bk{background:repeating-linear-gradient(45deg,#8a2f1c 0 5px,#a4401f 5px 10px);border-color:var(--gold)}
+.tent{grid-column:3;grid-row:1/4;position:relative;cursor:pointer;width:120px}.tent svg{width:100%;overflow:visible}
+.flap{transition:transform .45s;transform-box:fill-box}.fl{transform-origin:0 100%}.fr{transform-origin:100% 100%}
+.tent:hover .fl,.tent.open .fl{transform:scaleX(.18)}.tent:hover .fr,.tent.open .fr{transform:scaleX(.18)}
+.bub{position:absolute;left:50%;top:-14px;transform:translate(-50%,6px) scale(.6);background:var(--bone);color:#3a2610;border:3px solid #2a1608;border-radius:20px;padding:0 12px;font-size:1.2rem;opacity:0;transition:.25s;display:flex;gap:4px;align-items:center;pointer-events:none;z-index:3;white-space:nowrap}
+.bub svg{width:20px}.tent:hover .bub,.tent.open .bub{opacity:1;transform:translate(-50%,-6px) scale(1)}
+#hand{display:flex;gap:26px;justify-content:center;margin:20px 0 8px;flex-wrap:wrap}
+.opt{width:170px;height:230px;border-radius:14px;border:4px solid #2a1608;box-shadow:0 8px 0 #000a;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px;transition:.18s;font-size:1.3rem}
+.opt svg{width:100px}.opt.go{background:radial-gradient(#ffd27a,#d9512c);color:#3a0e00}.opt.home{background:radial-gradient(#a8ecd8,#2fa58a);color:#06382c}
+.opt:not(.off):hover{transform:translateY(-16px) rotate(-2deg)}.opt.off{filter:grayscale(.7) brightness(.6);cursor:default}.opt.pick{filter:none;transform:translateY(-22px);box-shadow:0 0 0 5px var(--gold),0 8px 0 #000a}
+.opt small{font-size:.9rem;opacity:.8;text-align:center}
+.fx{position:fixed;width:40px;pointer-events:none;animation:up 1.5s forwards;z-index:9}@keyframes up{to{transform:translateY(-190px) rotate(60deg);opacity:0}}
+#err{color:#ffb4a0}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style></head><body><main>
-<div style="text-align:center"><h1>INCAN GOLD</h1><div>ขุมทรัพย์อินคา · เล่นออนไลน์กับเพื่อน</div></div>
-<div id="lobby" class="box" style="margin-top:18px"><div class="row">
-<input id="name" placeholder="ชื่อนักสำรวจ" maxlength="14"><input id="room" placeholder="รหัสห้อง (เว้นว่าง = สร้างใหม่)" maxlength="5" style="text-transform:uppercase;width:260px">
-<button class="go" id="join">เข้าสู่วิหาร</button></div><p id="err"></p>
-<p>กติกา: 5 รอบ ทุกรอบเปิดการ์ดทีละใบ · เพชรแบ่งเท่าๆ กันให้คนที่ยังอยู่ (เศษตกค้างบนการ์ด) · ทุกคนเลือกพร้อมกันว่า "ลุยต่อ" หรือ "กลับเต็นท์" · ภัยชนิดเดียวกันโผล่ครั้งที่ 2 = ทุกคนที่ยังอยู่เสียเพชรในมือ · กลับคนเดียวได้เก็บโบราณวัตถุ · จบ 5 รอบ เพชรในเต็นท์มากสุดชนะ</p></div>
+<div class="wood bar"><span class="logo">INCAN GOLD</span><span id="top" class="hide row"><span>ห้อง <b id="code" style="font-size:1.5rem;color:var(--gold)"></b></span><span class="rounds" id="rounds"></span><button id="mute">🔊</button></span></div>
+<div id="lobby" class="parch" style="margin-top:14px;text-align:center"><div id="hero"></div><h2 style="margin:4px">ขุมทรัพย์อินคา — เล่นออนไลน์กับเพื่อน</h2>
+<div class="row" style="justify-content:center"><input id="name" placeholder="ชื่อนักสำรวจ" maxlength="14"><input id="room" placeholder="รหัสห้อง (ว่าง = สร้างใหม่)" maxlength="5" style="text-transform:uppercase;width:240px"><button class="big" id="join">เข้าสู่วิหาร</button></div><p id="err"></p>
+<p style="max-width:720px;margin:auto">5 รอบ · เปิดการ์ดทีละใบ เพชรแบ่งเท่าๆ กันให้คนที่ยังอยู่ เศษค้างบนการ์ด · ทุกคนเลือกการ์ด <b>ลุยต่อ</b> หรือ <b>กลับเต็นท์</b> พร้อมกัน · ภัยชนิดเดียวกันโผล่ครั้งที่ 2 = เสียเพชรในมือหมด · กลับคนเดียวได้โบราณวัตถุ · จบเกมเต็นท์ใครมีเพชรมากสุดชนะ</p></div>
 <div id="game" class="hide">
-<div class="row" style="justify-content:space-between;margin-top:14px"><div>ห้อง <b id="code" style="font-size:1.6rem;color:var(--gold)"></b> · รอบ <b id="rd"></b>/5 · การ์ดในกอง <b id="dk"></b></div>
-<div class="seen" id="seen"></div><button id="mute">🔊</button></div>
-<div class="box" style="margin-top:10px"><div id="path"></div><div id="msg"></div></div>
-<div class="row" style="justify-content:center;margin:16px 0" id="ctl">
-<button class="go big" id="bgo">🔦 ลุยต่อ</button><button class="home big" id="bhome">⛺ กลับเต็นท์</button><button class="big hide" id="start">เริ่มเกม</button></div>
-<div class="pl" id="pl"></div></div></main>
+<div id="table"><div class="side wood" style="padding:10px"><div class="pile" id="pile"></div><div>กองการ์ด <b id="dk"></b></div><div id="trk"></div><small>ภัยที่เจอรอบนี้</small></div>
+<div class="parch"><div id="path"></div><div id="msg"></div><div id="hint"></div></div></div>
+<div id="seats"></div><div class="row" style="justify-content:center;margin-top:14px"><button class="big hide" id="start">เริ่มเกม</button></div>
+<div id="hand"><div class="opt go off" id="bgo"></div><div class="opt home off" id="bhome"></div></div></div></main>
 <script>
-const $=id=>document.getElementById(id),IC={snake:'🐍',spider:'🕷️',mummy:'🧟',fire:'🔥',rock:'🪨'},NM={snake:'งู',spider:'แมงมุม',mummy:'มัมมี่',fire:'ไฟ',rock:'หินถล่ม'};
-let ws,S=null,lastEv=0,mute=false,AC;
-function snd(f,d=.15,ty='square',v=.08,sl=0,at=0){if(mute)return;AC=AC||new(window.AudioContext||webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+at;
-o.type=ty;o.frequency.setValueAtTime(f,t);if(sl)o.frequency.exponentialRampToValueAtTime(sl,t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d)}
-const SFX={flip:()=>snd(300,.12,'triangle',.1,500),coin:()=>{snd(988,.1,'square',.07);snd(1319,.25,'square',.07,0,.09)},
-haz:()=>{snd(220,.35,'sawtooth',.09,110)},boom:()=>{snd(120,.9,'sawtooth',.2,30);snd(80,.9,'square',.15,20,.1)},
-art:()=>[523,659,784,1047].forEach((f,i)=>snd(f,.3,'triangle',.1,0,i*.1)),leave:()=>snd(400,.3,'triangle',.1,200),
-win:()=>[523,659,784,659,784,1047].forEach((f,i)=>snd(f,.25,'square',.08,0,i*.13))};
-function fx(e,n=8){for(let i=0;i<n;i++){const s=document.createElement('div');s.className='fx';s.textContent=e;s.style.left=(15+Math.random()*70)+'vw';s.style.top=(40+Math.random()*30)+'vh';s.style.animationDelay=Math.random()*.4+'s';document.body.append(s);setTimeout(()=>s.remove(),2000)}}
+const $=id=>document.getElementById(id);
+const NM={snake:'งู',spider:'แมงมุม',mummy:'มัมมี่',fire:'ไฟ',rock:'หินถล่ม'},HK=Object.keys(NM);
+const GC={1:'#5eead4',2:'#4ade80',3:'#38bdf8',4:'#60a5fa',5:'#a78bfa',7:'#e879f9',9:'#fb7185',11:'#ef4444',13:'#fb923c',14:'#fbbf24',15:'#fde047',17:'#fffbd0'};
+const PC=['#ef4444','#3b82f6','#22c55e','#f59e0b','#a855f7','#14b8a6','#ec4899','#94a3b8'];
+const gi=c=>`<polygon points="20,5 80,5 98,32 50,88 2,32" fill="${c}" stroke="#000a" stroke-width="4"/><polygon points="20,5 35,32 2,32" fill="#fff5"/><polygon points="20,5 80,5 65,32 35,32" fill="#fff8"/><polygon points="80,5 98,32 65,32" fill="#0003"/><polygon points="35,32 65,32 50,88" fill="#0004"/><polygon points="2,32 35,32 50,88" fill="#fff3"/><path d="M28 12l10 0-8 12z" fill="#fff"/>`;
+const gem=c=>`<svg viewBox="0 0 100 90">${gi(c)}</svg>`;
+const SV={
+snake:`<svg viewBox="0 0 100 100"><path d="M18 90C-5 62 65 66 40 44 22 28 72 28 62 14" stroke="#14532d" stroke-width="18" fill="none" stroke-linecap="round"/><path d="M18 90C-5 62 65 66 40 44 22 28 72 28 62 14" stroke="#4ade80" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M18 90C-5 62 65 66 40 44 22 28 72 28 62 14" stroke="#facc15" stroke-width="3" fill="none" stroke-dasharray="3 9"/><ellipse cx="64" cy="12" rx="12" ry="9" fill="#4ade80" stroke="#14532d" stroke-width="3"/><circle cx="60" cy="9" r="3" fill="#fde047"/><circle cx="69" cy="9" r="3" fill="#fde047"/><path d="M75 14l12 3m-12-3l11 8" stroke="#ef4444" stroke-width="2.5"/></svg>`,
+spider:`<svg viewBox="0 0 100 100"><g stroke="#fff6" stroke-width="1"><path d="M0 0L50 50M100 0L50 50M0 100L50 50M100 100L50 50"/><path d="M10 10Q30 20 40 40M90 10Q70 20 60 40" fill="none"/></g><g stroke="#111" stroke-width="5" fill="none" stroke-linecap="round"><path d="M42 52L16 36 8 54M42 58L14 62 12 82M44 64L28 86M44 46L26 22M58 52L84 36 92 54M58 58L86 62 88 82M56 64L72 86M56 46L74 22"/></g><ellipse cx="50" cy="62" rx="17" ry="20" fill="#222" stroke="#000" stroke-width="3"/><circle cx="50" cy="40" r="11" fill="#333"/><path d="M50 55l-6 10h12z" fill="#e11d48"/><circle cx="45" cy="38" r="3.5" fill="#f33"/><circle cx="55" cy="38" r="3.5" fill="#f33"/></svg>`,
+mummy:`<svg viewBox="0 0 100 100"><rect x="26" y="8" width="48" height="82" rx="22" fill="#e6d8aa" stroke="#3a2a10" stroke-width="4"/><g stroke="#8b7a45" stroke-width="3"><path d="M26 28L74 18M26 44L74 36M26 62L74 54M30 78L72 70M28 18L72 40"/></g><rect x="34" y="34" width="32" height="12" rx="5" fill="#111"/><circle cx="43" cy="40" r="4" fill="#7CFC00"/><circle cx="57" cy="40" r="4" fill="#7CFC00"/><path d="M40 62q10 6 20 0" stroke="#111" stroke-width="3" fill="none"/><path d="M70 60q18 10 22 30" stroke="#e6d8aa" stroke-width="6" fill="none"/></svg>`,
+fire:`<svg viewBox="0 0 100 100"><path d="M50 4C58 28 86 38 82 66 80 86 64 96 50 96S18 86 18 66C18 52 28 46 32 34 40 42 42 46 44 50 46 30 44 16 50 4Z" fill="#f97316" stroke="#7c2d12" stroke-width="3"/><path d="M50 36C56 52 70 58 68 74 66 86 58 92 50 92S34 86 34 74C34 64 44 60 46 50Z" fill="#fbbf24"/><path d="M50 62C54 70 60 74 58 82 56 88 44 88 42 82 40 74 48 70 50 62Z" fill="#fff7c2"/></svg>`,
+rock:`<svg viewBox="0 0 100 100"><polygon points="14,88 8,50 30,22 62,26 76,52 70,88" fill="#78716c" stroke="#292524" stroke-width="4"/><polygon points="30,22 62,26 50,48 26,46" fill="#a8a29e"/><path d="M40 52L48 70 38 88" stroke="#292524" stroke-width="3" fill="none"/><polygon points="72,8 88,14 84,34 70,30" fill="#a8a29e" stroke="#292524" stroke-width="3"/><polygon points="80,56 94,62 90,82 78,76" fill="#78716c" stroke="#292524" stroke-width="3"/><path d="M62 4l-4 10m22-6l2 8" stroke="#d6d3d1" stroke-width="3"/></svg>`};
+const ART=`<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff3"/><path d="M34 14h32l-4 10q22 14 18 40-4 22-30 26-26-4-30-26-4-26 18-40Z" fill="#f5b82e" stroke="#7a4a00" stroke-width="4"/><path d="M30 44h40M32 58h36" stroke="#7a4a00" stroke-width="3"/><path d="M40 70l10-8 10 8-10 8Z" fill="#e11d48" stroke="#7a0f2a" stroke-width="2"/><ellipse cx="50" cy="16" rx="18" ry="5" fill="#ffe08a" stroke="#7a4a00" stroke-width="3"/></svg>`;
+const TORCH=`<svg viewBox="0 0 100 100"><rect x="44" y="46" width="12" height="46" rx="4" fill="#7a4a2a" stroke="#2a1608" stroke-width="3"/><path d="M50 6C58 22 72 30 68 46 66 58 58 62 50 62S34 58 32 46C32 36 42 32 44 22 46 16 48 12 50 6Z" fill="#fbbf24" stroke="#7c2d12" stroke-width="3"/><path d="M50 30C54 40 60 44 58 52 56 58 44 58 42 52 42 44 48 40 50 30Z" fill="#ef4444"/></svg>`;
+const TENTI=`<svg viewBox="0 0 100 100"><polygon points="6,90 50,12 94,90" fill="#f5b82e" stroke="#2a1608" stroke-width="4"/><polygon points="50,12 50,90 36,90" fill="#2a1608"/><polygon points="50,12 94,90 56,90" fill="#d9512c"/><path d="M50 4v10" stroke="#2a1608" stroke-width="4"/><path d="M50 4l16 5-16 5Z" fill="#ef4444"/></svg>`;
+const PYR=(c='#f5b82e')=>`<svg viewBox="0 0 100 70"><path d="M5 66h90V54H82V42H70V30H58V18H42v12H30v12H18v12H5Z" fill="${c}" stroke="#2a1608" stroke-width="4"/></svg>`;
+const PAWN=c=>`<svg viewBox="0 0 50 70"><ellipse cx="25" cy="62" rx="18" ry="6" fill="#0006"/><path d="M12 60Q14 34 25 32Q36 34 38 60Z" fill="${c}" stroke="#000a" stroke-width="3"/><circle cx="25" cy="20" r="13" fill="#f2c9a0" stroke="#000a" stroke-width="3"/><path d="M11 18Q25-2 39 18Z" fill="${c}" stroke="#000a" stroke-width="3"/><rect x="11" y="16" width="28" height="4" fill="#fff6"/></svg>`;
+function tent(c,n,hid){let g='';if(!hid)for(let i=0;i<Math.min(n,12);i++)g+=`<g transform="translate(${34+(i%6)*13},${86-((i/6)|0)*11}) scale(.15)">${gi(Object.values(GC)[i%12])}</g>`;
+return`<div class="tent" onclick="this.classList.toggle('open')"><div class="bub">${hid?'???':`<b>${n}</b>`}${gem('#fde047')}</div><svg viewBox="0 0 140 110"><polygon points="8,102 70,8 132,102" fill="#1a0f08"/>${g}${hid?'<text x="70" y="82" text-anchor="middle" font-size="30" fill="#f5b82e" font-family="Itim">?</text>':''}
+<g class="flap fl"><polygon points="8,102 70,8 70,102" fill="${c}" stroke="#000a" stroke-width="3"/><path d="M40 55l30-6M24 80l46-8" stroke="#fff5" stroke-width="3"/></g><g class="flap fr"><polygon points="70,8 132,102 70,102" fill="${c}" stroke="#000a" stroke-width="3"/><polygon points="70,8 132,102 70,102" fill="#0003"/></g><path d="M70 2v10" stroke="#000a" stroke-width="3"/><path d="M70 2l18 5-18 5Z" fill="#ef4444"/><path d="M0 104h140" stroke="#000" stroke-width="3"/></svg></div>`}
+const gs=v=>`<span class="hd" style="display:inline-flex">${gem(GC[v])}</span>`;
+function cardHTML(c,nw,bust){const z=nw?' new':'';
+if(c.k==='t'){const sz=48+Math.min(c.v,17)*2.6;return`<div class="card t${z}"><i class="a">${c.v}</i><i class="b">${c.v}</i><svg viewBox="0 0 100 90" style="width:${sz}px;filter:drop-shadow(0 0 8px ${GC[c.v]})">${gi(GC[c.v])}</svg><span class="cap">เหลือ ${c.left}</span></div>`}
+if(c.k==='a')return`<div class="card a${z}"><i class="a">${c.v}</i><i class="b">${c.v}</i>${ART}<span class="cap">โบราณวัตถุ</span></div>`;
+return`<div class="card h${z}${bust?' bust':''}">${SV[c.h]}<span class="cap">${NM[c.h]}</span></div>`}
+let ws,S=null,lastEv=0,mute=false,AC,prevLen=0,msg='',tm=0;
+function snd(f,d=.15,ty='square',v=.08,sl=0,at=0){if(mute)return;AC=AC||new(window.AudioContext||webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+at;o.type=ty;o.frequency.setValueAtTime(f,t);if(sl)o.frequency.exponentialRampToValueAtTime(sl,t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d)}
+const SFX={flip:()=>snd(300,.12,'triangle',.1,520),coin:()=>{snd(988,.1,'square',.07);snd(1319,.25,'square',.07,0,.09)},haz:()=>snd(220,.4,'sawtooth',.09,100),boom:()=>{snd(120,.9,'sawtooth',.2,30);snd(80,.9,'square',.15,20,.1)},
+art:()=>[523,659,784,1047].forEach((f,i)=>snd(f,.3,'triangle',.1,0,i*.1)),leave:()=>snd(400,.3,'triangle',.1,200),pick:()=>snd(600,.08,'square',.06),win:()=>[523,659,784,659,784,1047].forEach((f,i)=>snd(f,.25,'square',.08,0,i*.13))};
+function fx(kind,n=8){for(let i=0;i<n;i++){const s=document.createElement('div');s.className='fx';s.innerHTML=kind==='g'?gem(Object.values(GC)[i%12]):SV[kind];s.style.left=(10+Math.random()*80)+'vw';s.style.top=(40+Math.random()*40)+'vh';s.style.animationDelay=Math.random()*.5+'s';document.body.append(s);setTimeout(()=>s.remove(),2300)}}
 function conn(){ws=new WebSocket((location.protocol=='https:'?'wss://':'ws://')+location.host);
 ws.onopen=()=>ws.send(JSON.stringify({t:'join',name:$('name').value.trim(),room:$('room').value}));
 ws.onmessage=e=>{const d=JSON.parse(e.data);if(d.err){$('err').textContent=d.err;return}S=d;render()};
-ws.onclose=()=>{if(S)$('msg').textContent='หลุดการเชื่อมต่อ — รีเฟรชแล้วใช้ชื่อเดิมเพื่อกลับเข้าห้อง'}}
+ws.onclose=()=>{if(S)$('hint').textContent='หลุดการเชื่อมต่อ — รีเฟรชแล้วใช้ชื่อเดิมเพื่อกลับเข้าห้อง'}}
+$('hero').innerHTML=`<div style="display:flex;justify-content:center;align-items:end;gap:10px;height:90px">${[17,7,11,5,14].map((v,i)=>`<div style="width:${44+i%3*12}px">${gem(GC[v])}</div>`).join('')}<div style="width:110px">${PYR()}</div><div style="width:60px">${ART}</div></div>`;
+$('bgo').innerHTML=`${TORCH}<b>ลุยต่อ</b><small>เสี่ยงเอาเพชรเพิ่ม</small>`;$('bhome').innerHTML=`${TENTI}<b>กลับเต็นท์</b><small>เก็บเพชรกลับบ้านให้ปลอดภัย</small>`;
 $('join').onclick=()=>{if(!$('name').value.trim()){$('err').textContent='ใส่ชื่อก่อนนะ';return}AC=AC||new(window.AudioContext||webkitAudioContext)();conn()};
-$('mute').onclick=()=>{mute=!mute;$('mute').textContent=mute?'🔇':'🔊'};
-$('start').onclick=()=>ws.send(JSON.stringify({t:'start'}));
-$('bgo').onclick=()=>ws.send(JSON.stringify({t:'choice',go:true}));$('bhome').onclick=()=>ws.send(JSON.stringify({t:'choice',go:false}));
-function cardHTML(c){if(c.k==='t')return`<div class="card t">💎<b>${c.v}</b><small>เหลือ ${c.left}</small></div>`;
-if(c.k==='a')return`<div class="card a">🏺<b>${c.v}</b><small>โบราณวัตถุ</small></div>`;
-return`<div class="card ${S.phase==='bust'&&c===S.path[S.path.length-1]?'b':'h'}">${IC[c.h]}<small>${NM[c.h]}</small></div>`}
-function render(){const me=S.players.find(p=>p.id===S.me),L=S.phase==='lobby';
-$('lobby').classList.add('hide');$('game').classList.remove('hide');$('code').textContent=S.code;$('rd').textContent=S.round;$('dk').textContent=S.deck;
-$('seen').innerHTML=Object.keys(IC).map(h=>`<span class="s${S.seen[h]||0}">${IC[h]}</span>`).join('');
-const old=$('path').children.length;$('path').innerHTML=S.path.map(cardHTML).join('');$('path').scrollLeft=1e5;
-$('pl').innerHTML=S.players.map(p=>`<div class="p ${p.id===S.me?'me':''} ${!p.in&&!L?'out':''}"><b>${p.name}${p.id===S.host?' 👑':''}${p.off?' 📴':''}</b><br>
-${L?'รอเพื่อน…':`🎒 <span class="gem">${p.hand}</span> ${p.in?(p.done?'✅ เลือกแล้ว':'🤔 กำลังคิด'):'⛺ อยู่เต็นท์'}<br>⛺ ${p.tent===null?'???':p.tent} · 🏺 ${p.arts}`}</div>`).join('');
+$('mute').onclick=()=>{mute=!mute;$('mute').textContent=mute?'🔇':'🔊'};$('start').onclick=()=>ws.send(JSON.stringify({t:'start'}));
+const choose=go=>{if($('bgo').classList.contains('off'))return;SFX.pick();$('bgo').classList.toggle('pick',go);$('bhome').classList.toggle('pick',!go);ws.send(JSON.stringify({t:'choice',go}))};
+$('bgo').onclick=()=>choose(true);$('bhome').onclick=()=>choose(false);
+function mini(i,cls=''){return`<div class="mini ${cls}">${i}</div>`}
+function render(){const me=S.players.find(p=>p.id===S.me),L=S.phase==='lobby',e=S.ev;
+$('lobby').classList.add('hide');$('game').classList.remove('hide');$('top').classList.remove('hide');$('code').textContent=S.code;$('dk').textContent=S.deck;
+$('rounds').innerHTML=[1,2,3,4,5].map(r=>`<span class="${r===S.round?'on':r<S.round?'done':''}">${PYR(r<=S.round?'#f5b82e':'#888')}</span>`).join('');
+$('pile').innerHTML=`<div class="card back"></div><div class="card back"></div><div class="card back">${PYR('#f5b82e')}</div>`;
+$('trk').innerHTML=HK.map(h=>`<div class="chip s${S.seen[h]||0}" title="${NM[h]}">${SV[h]}</div>`).join('');
+const nw=S.path.length<prevLen?0:prevLen;$('path').innerHTML=S.path.map((c,i)=>cardHTML(c,i>=nw&&S.path.length>prevLen||S.path.length<prevLen,S.phase==='bust'&&i===S.path.length-1)).join('')||'<div style="opacity:.6">ยังไม่มีการ์ดบนทาง…</div>';prevLen=S.path.length;$('path').scrollLeft=1e5;
+$('seats').innerHTML=S.players.map((p,i)=>{let slot='';
+if(S.phase==='decide'&&p.in&&p.done)slot=mini('','bk');
+if(S.phase==='reveal'&&e&&e.t==='reveal'){if(e.leave.includes(p.name))slot=mini(TENTI,'rev');else if(e.stay.includes(p.name))slot=mini(TORCH,'rev')}
+return`<div class="seat ${p.id===S.me?'me':''} ${!p.in&&!L?'out':''}"><div class="pawn">${PAWN(PC[i%8])}</div><div><div class="nm">${p.name}${p.id===S.host?' 👑':''}${p.off?' 📴':''}</div>
+<div class="hd">${gem('#fde047')}<b>${p.hand}</b> <span class="st">ในมือ</span></div><div class="st">${L?'รอเริ่ม':p.in?(p.done?'✅ เลือกแล้ว':'🤔 คิดอยู่'):'อยู่ในเต็นท์'} · โบราณวัตถุ ${p.arts}</div></div>${tent(PC[i%8],p.tent||0,p.tent===null)}<div class="slot">${slot}</div></div>`}).join('');
 const dec=S.phase==='decide'&&me.in&&!me.done;
-$('bgo').classList.toggle('hide',L||S.phase==='over');$('bhome').classList.toggle('hide',L||S.phase==='over');$('bgo').disabled=$('bhome').disabled=!dec;
+['bgo','bhome'].forEach(id=>{$(id).classList.toggle('off',!dec);if(dec)$(id).classList.remove('pick')});
+$('hand').classList.toggle('hide',L||S.phase==='over');
 $('start').classList.toggle('hide',!(L&&S.host===S.me));$('start').disabled=S.players.length<2;
-let m=L?(S.players.length<2?'ส่งรหัสห้องให้เพื่อน — ต้องมีอย่างน้อย 2 คน':'พร้อมแล้ว รอเจ้าของห้องกดเริ่ม'):me.in?(me.done?'รอคนอื่นตัดสินใจ…':'ลุยต่อหรือกลับเต็นท์?'):'คุณอยู่เต็นท์แล้ว รอดูรอบนี้จบ';
-const e=S.ev;if(e&&e.n!==lastEv){lastEv=e.n;
-if(e.t==='treasure'){SFX.flip();setTimeout(SFX.coin,250);fx('💎',6);m=`เจอเพชร ${e.v}! คนละ ${e.s}`}
-if(e.t==='artifact'){SFX.flip();SFX.art();fx('🏺',4);m='พบโบราณวัตถุ! ใครกลับคนเดียวได้ไป'}
-if(e.t==='hazard'){SFX.flip();SFX.haz();m=`⚠️ ${NM[e.h]}! ภัยนี้โผล่อีกครั้ง = หายนะ`}
-if(e.t==='bust'){SFX.boom();document.body.classList.add('shake','flash');setTimeout(()=>document.body.classList.remove('shake','flash'),800);fx(IC[e.h],12);m=`💥 ${NM[e.h]}สองตัว! ผู้ที่ยังอยู่เสียเพชรในมือทั้งหมด`}
-if(e.t==='reveal'){e.leave.length?(SFX.leave(),SFX.coin()):0;m=`กลับเต็นท์: ${e.leave.join(', ')||'ไม่มี'} · ลุยต่อ: ${e.stay.join(', ')||'ไม่มี'}`}
-if(e.t==='allhome')m='ทุกคนกลับเต็นท์แล้ว จบรอบ';
-if(e.t==='over'){SFX.win();const w=[...S.players].sort((a,b)=>b.tent-a.tent);m=`🏆 ผู้ชนะคือ ${w[0].name} ด้วย ${w[0].tent} เพชร!`;fx('🏆',10);fx('💎',10)}
-$('msg').dataset.m=m}
-$('msg').textContent=(e&&e.n===lastEv&&$('msg').dataset.m&&!L&&S.phase!=='decide')?$('msg').dataset.m:(S.phase==='decide'&&e&&e.t!=='reveal'?($('msg').dataset.m+' — '+m):m);
-if(S.phase==='over')$('msg').textContent=$('msg').dataset.m}
+let h=L?(S.players.length<2?'ส่งรหัสห้องให้เพื่อน — ต้องมีอย่างน้อย 2 คน':'พร้อมแล้ว รอเจ้าของห้องกดเริ่ม'):S.phase==='decide'?(me.in?(me.done?'วางการ์ดแล้ว รอคนอื่น…':'เลือกการ์ดด้านล่าง: ลุยต่อ หรือ กลับเต็นท์'):'คุณอยู่ในเต็นท์แล้ว รอดูรอบนี้จบ'):'';
+if(e&&e.n!==lastEv){lastEv=e.n;
+if(e.t==='treasure'){SFX.flip();setTimeout(SFX.coin,250);fx('g',7);msg=`เจอเพชร ${e.v}! แบ่งคนละ ${e.s}`}
+if(e.t==='artifact'){SFX.flip();SFX.art();fx('g',4);msg='พบโบราณวัตถุ! ใครกลับคนเดียวได้ไปเลย'}
+if(e.t==='hazard'){SFX.flip();SFX.haz();msg=`⚠️ ${NM[e.h]}! ถ้าเจอซ้ำจะเป็นหายนะ`}
+if(e.t==='bust'){SFX.boom();document.body.classList.add('shake','flash');setTimeout(()=>document.body.classList.remove('shake','flash'),900);fx(e.h,8);msg=`💥 ${NM[e.h]}สองตัว! ผู้ที่ยังอยู่เสียเพชรในมือทั้งหมด`}
+if(e.t==='reveal'){if(e.leave.length){SFX.leave();SFX.coin()}msg=`เปิดการ์ด — กลับเต็นท์: ${e.leave.join(', ')||'ไม่มี'} · ลุยต่อ: ${e.stay.join(', ')||'ไม่มี'}`}
+if(e.t==='allhome')msg='ทุกคนกลับเต็นท์แล้ว จบรอบ';
+if(e.t==='over'){SFX.win();const w=[...S.players].sort((a,b)=>b.tent-a.tent);msg=`🏆 ผู้ชนะคือ ${w[0].name} ด้วยเพชร ${w[0].tent}!`;fx('g',14)}}
+$('msg').textContent=L?'':msg;$('hint').textContent=h}
 </script></body></html>
